@@ -16,6 +16,8 @@ import Typography from "@material-ui/core/Typography";
 
 import faker from "faker";
 
+import { Map } from "../components/Map";
+
 export function App() {
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 	const theme = React.useMemo(
@@ -49,73 +51,81 @@ export function App() {
 		</ThemeProvider>
 	);
 
-	const AuthenticatedPage = () => {
-		return (
-			<>
-				<Switch>
-					<Route exact path="/">
-						<>Home - Authenticated</>
-					</Route>
-					<Route exact path="/change-password">
-						<ChangePassword />
-					</Route>
-					<Route exact path="/crud-table-lab">
-						<Typography variant="h3" color="secondary">
-							Dummy Data
-						</Typography>
-						<CrudTable
-							data={[...Array(20).keys()].map((id) => ({
-								id: id + 1,
-								name: faker.name.firstName(),
-								age: faker.datatype.number(90),
-							}))}
-							columns={["id", "name", "age"]}
-							deleteRecord={(id) =>
-								window.alert("Delete record " + id)
-							}
-						/>
-					</Route>
-				</Switch>
-			</>
-		);
-	};
+	// const AuthenticatedPage = () => {
+	// 	return (
+	// 		<>
+	// 			<Switch>
+	// 				<Route exact path="/">
+	// 					<>Home - Authenticated</>
+	// 				</Route>
+	// 				<Route exact path="/change-password">
+	// 					<ChangePassword />
+	// 				</Route>
+	// 				<Route exact path="/crud-table-lab">
+	// 					<Typography variant="h3" color="secondary">
+	// 						Dummy Data
+	// 					</Typography>
+	// 					<CrudTable
+	// 						data={[...Array(20).keys()].map((id) => ({
+	// 							id: id + 1,
+	// 							name: faker.name.firstName(),
+	// 							age: faker.datatype.number(90),
+	// 						}))}
+	// 						columns={["id", "name", "age"]}
+	// 						deleteRecord={(id) =>
+	// 							window.alert("Delete record " + id)
+	// 						}
+	// 					/>
+	// 				</Route>
+	// 			</Switch>
+	// 		</>
+	// 	);
+	// };
 
-	const GuestPage = () => {
-		return (
-			<>
-				<Switch>
-					<Route exact path="/login">
-						<Login />
-					</Route>
-					<Route exact path="/register">
-						<Register />
-					</Route>
-					<Route exact path="/">
-						<>Home - Guest</>
-					</Route>
-				</Switch>
-			</>
-		);
-	};
+	// const GuestPage = () => {
+	// 	return (
+	// 		<>
+	// 			<Switch>
+	// 				<Route exact path="/login">
+	// 					<Login />
+	// 				</Route>
+	// 				<Route exact path="/register">
+	// 					<Register />
+	// 				</Route>
+	// 				<Route exact path="/">
+	// 					<>Home - Guest</>
+	// 				</Route>
+	// 			</Switch>
+	// 		</>
+	// 	);
+	// };
+
+	// const Main = () => {
+	// 	const authCtx = useAuth();
+
+	// 	if (authCtx.user) {
+	// 		return <AuthenticatedPage />;
+	// 	} else {
+	// 		return <GuestPage />;
+	// 	}
+	// };
 
 	const Main = () => {
-		const authCtx = useAuth();
-
-		if (authCtx.user) {
-			return <AuthenticatedPage />;
-		} else {
-			return <GuestPage />;
-		}
+		return (
+			<>
+				<Map />
+			</>
+		);
 	};
 
 	return (
 		<ThemeWrapper>
 			<SnackbarProvider>
-				<AuthenticationProvider>
-					<Layout>
-						<Main />
-					</Layout>
-				</AuthenticationProvider>
+				{/* <AuthenticationProvider> */}
+				{/* <Layout> */}
+				<Main />
+				{/* </Layout> */}
+				{/* </AuthenticationProvider> */}
 			</SnackbarProvider>
 		</ThemeWrapper>
 	);
