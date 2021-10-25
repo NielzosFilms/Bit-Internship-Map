@@ -6,6 +6,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { Route, Switch } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 
+import "mapbox-gl/dist/mapbox-gl.css";
+
 import { AuthenticationProvider, useAuth } from "../providers";
 
 import { Login, Register } from "../components/authentication";
