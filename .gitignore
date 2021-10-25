@@ -26,3 +26,4 @@ yarn-error.log*
 # generated files
 generatedSchema.js
 generatedModelResolvers.js
+.env
